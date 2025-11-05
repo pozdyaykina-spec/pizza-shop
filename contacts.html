@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Пицца Сказка — Контакты</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body data-page="contacts">
+    <header class="site-header">
+      <div class="container header-content">
+        <a class="logo" href="./">Пицца Сказка</a>
+        <nav class="main-nav" data-nav>
+          <a href="index.html#menu">Меню</a>
+          <a href="index.html#delivery">Доставка</a>
+          <a href="order.html">Оформить заказ</a>
+          <a class="active" href="contacts.html">Контакты</a>
+        </nav>
+        <button class="burger" data-burger aria-label="Открыть меню">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <a class="phone-order" href="tel:+79106560571">Заказать по телефону</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="container">
+          <h1>Свяжитесь с «Пиццей Сказкой»</h1>
+          <p>Мы всегда рядом, чтобы помочь с заказом и ответить на вопросы.</p>
+        </div>
+      </section>
+
+      <section class="contacts">
+        <div class="container contacts-grid">
+          <div class="contacts-info">
+            <h2>Контактные данные</h2>
+            <ul class="info-list">
+              <li>
+                <span class="label">Телефон</span>
+                <a href="tel:+79106560571">+7 910 656-05-71</a>
+              </li>
+              <li>
+                <span class="label">Почта</span>
+                <a href="mailto:hello@pizzaskazka.ru">hello@pizzaskazka.ru</a>
+              </li>
+              <li>
+                <span class="label">Адрес</span>
+                <p>г. Рассказово, ул. Пушкина, 16А</p>
+              </li>
+            </ul>
+
+            <h3>Режим работы</h3>
+            <p>Ежедневно с 10:00 до 23:00, без выходных.</p>
+
+            <h3>Социальные сети</h3>
+            <div class="social-links">
+              <a href="#" aria-label="Мы во ВКонтакте">VK</a>
+              <a href="#" aria-label="Мы в Телеграме">Telegram</a>
+              <a href="#" aria-label="Мы в Instagram">Instagram</a>
+            </div>
+          </div>
+
+          <div class="contacts-map">
+            <iframe
+              title="Карта «Пиццы Сказки»"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=41.8715%2C52.6495%2C41.8885%2C52.6575&layer=mapnik&marker=52.6535%2C41.88"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+            <p class="map-caption">Мы находимся по адресу: Рассказово, ул. Пушкина, 16А — заберите заказ самовывозом в удобное время.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="feedback">
+        <div class="container feedback-card">
+          <h2>Есть идея или вопрос?</h2>
+          <p>Расскажите нам — менеджер свяжется в течение 10 минут.</p>
+          <form class="feedback-form" data-feedback-form>
+            <div class="form-group">
+              <label for="feedback-name">Имя</label>
+              <input id="feedback-name" name="name" type="text" placeholder="Анна" />
+            </div>
+            <div class="form-group">
+              <label for="feedback-phone">Телефон *</label>
+              <input id="feedback-phone" name="phone" type="tel" required placeholder="+7 (900) 000-00-00" />
+            </div>
+            <div class="form-group">
+              <label for="feedback-message">Сообщение *</label>
+              <textarea id="feedback-message" name="message" rows="4" required placeholder="Напишите, чем мы можем помочь"></textarea>
+            </div>
+            <button class="btn primary" type="submit">Отправить</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <a class="logo" href="./">Пицца Сказка</a>
+          <p>© 2024 «Пицца Сказка». Все права защищены.</p>
+        </div>
+        <div>
+          <p class="footer-title">График работы</p>
+          <p>Ежедневно с 10:00 до 23:00</p>
+        </div>
+        <div>
+          <p class="footer-title">Контакты</p>
+          <a href="tel:+79106560571">+7 910 656-05-71</a>
+          <a href="mailto:hello@pizzaskazka.ru">hello@pizzaskazka.ru</a>
+        </div>
+      </div>
+    </footer>
+
+    <div class="backdrop" data-backdrop aria-hidden="true"></div>
+
+    <script src="assets/js/app.js" defer></script>
+  </body>
+</html>
