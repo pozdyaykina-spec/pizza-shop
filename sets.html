@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Пицца Сказка — Контакты</title>
+    <title>Пицца Сказка — Сеты для компании</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -908,7 +908,6 @@ select:focus {
   .header-content {
     gap: 1rem;
   }
-
   .header-links {
     display: none;
   }
@@ -951,7 +950,7 @@ select:focus {
 
     </style>
   </head>
-  <body data-page="contacts">
+  <body data-page="sets">
     <header class="site-header">
       <div class="container header-content">
         <div class="header-left">
@@ -963,10 +962,10 @@ select:focus {
           <a class="logo" href="./">Пицца Сказка</a>
         </div>
         <div class="header-links">
-          <a href="index.html#menu">Меню</a>
-          <a href="index.html#delivery-info">Доставка</a>
+          <a href="#menu">Меню</a>
+          <a href="#delivery-info">Доставка</a>
           <a href="order.html">Оформить заказ</a>
-          <a class="active" href="contacts.html">Контакты</a>
+          <a href="contacts.html">Контакты</a>
         </div>
         <a class="phone-order" href="tel:+79106560571">Заказать по телефону</a>
       </div>
@@ -1021,74 +1020,112 @@ select:focus {
     <div class="nav-backdrop" data-nav-backdrop aria-hidden="true"></div>
 
     <main>
-      <section class="page-hero">
+      <section class="hero" id="hero">
+        <div class="container hero-content">
+          <div class="hero-text">
+            <p class="eyebrow">комбо-наборы • Рассказово</p>
+            <h1>Сеты для большой компании</h1>
+            <p class="description">
+              Готовые наборы с пиццами, роллами, закусками и напитками. Экономьте время на подборе и
+              получайте выгодную цену за комплекс.
+            </p>
+            <div class="hero-actions">
+              <a class="btn primary" href="#menu">Выбрать сет</a>
+              <a class="btn ghost" href="order.html">Перейти к оформлению</a>
+            </div>
+          </div>
+          <div class="hero-illustration">
+            <svg class="hero-graphic" width="480" height="420" viewBox="0 0 480 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="480" height="420" rx="48" fill="url(#paint0_linear)" />
+              <g opacity="0.9">
+                <circle cx="160" cy="150" r="120" fill="#FFE5D7" />
+                <circle cx="330" cy="230" r="130" fill="#FFD1C0" />
+                <circle cx="230" cy="250" r="150" fill="#FFBFA7" />
+              </g>
+              <g>
+                <path
+                  d="M240 120C180 120 140 170 140 215C140 275 190 310 240 310C290 310 340 275 340 215C340 170 300 120 240 120Z"
+                  fill="#FFBC40"
+                />
+                <path
+                  d="M240 140C188 140 160 180 160 214C160 262 200 290 240 290C280 290 320 262 320 214C320 180 292 140 240 140Z"
+                  fill="#FFE9C7"
+                />
+                <circle cx="206" cy="198" r="14" fill="#FF5A3D" />
+                <circle cx="280" cy="202" r="16" fill="#FF5A3D" />
+                <circle cx="248" cy="246" r="14" fill="#FF5A3D" />
+                <path
+                  d="M220 170C216 170 212 174 212 178C212 182 216 186 220 186C224 186 228 182 228 178C228 174 224 170 220 170Z"
+                  fill="#4CAF50"
+                />
+                <path
+                  d="M270 166C266 166 262 170 262 174C262 178 266 182 270 182C274 182 278 178 278 174C278 170 274 166 270 166Z"
+                  fill="#4CAF50"
+                />
+                <path
+                  d="M252 212C248 212 244 216 244 220C244 224 248 228 252 228C256 228 260 224 260 220C260 216 256 212 252 212Z"
+                  fill="#4CAF50"
+                />
+              </g>
+              <g opacity="0.9">
+                <rect x="320" y="80" width="100" height="38" rx="19" transform="rotate(12 320 80)" fill="#FF8C5A" />
+                <rect x="70" y="280" width="110" height="38" rx="19" transform="rotate(-15 70 280)" fill="#FF8C5A" />
+                <rect x="310" y="320" width="120" height="40" rx="20" transform="rotate(-6 310 320)" fill="#FF8C5A" />
+              </g>
+              <defs>
+                <linearGradient id="paint0_linear" x1="40" y1="20" x2="440" y2="400" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#FFF5EC" />
+                  <stop offset="1" stop-color="#FFD8CE" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="menu" id="menu">
         <div class="container">
-          <h1>Свяжитесь с «Пиццей Сказкой»</h1>
-          <p>Мы всегда рядом, чтобы помочь с заказом и ответить на вопросы.</p>
-        </div>
-      </section>
+          <h2>Готовые сеты</h2>
+          <p class="section-lead">Собранные комбинации из пицц, роллов и закусок — идеальны для вечеринок и офисных обедов.</p>
 
-      <section class="contacts">
-        <div class="container contacts-grid">
-          <div class="contacts-info">
-            <h2>Контактные данные</h2>
-            <ul class="info-list">
-              <li>
-                <span class="label">Телефон</span>
-                <a href="tel:+79106560571">+7 910 656-05-71</a>
-              </li>
-              <li>
-                <span class="label">Почта</span>
-                <a href="mailto:hello@pizzaskazka.ru">hello@pizzaskazka.ru</a>
-              </li>
-              <li>
-                <span class="label">Адрес</span>
-                <p>г. Рассказово, ул. Пушкина, 16А</p>
-              </li>
-            </ul>
-
-            <h3>Режим работы</h3>
-            <p>Ежедневно с 10:00 до 22:00, без выходных.</p>
-
-            <h3>Социальные сети</h3>
-            <div class="social-links">
-              <a href="#" aria-label="Мы во ВКонтакте">VK</a>
-              <a href="#" aria-label="Мы в Телеграме">Telegram</a>
-              <a href="#" aria-label="Мы в Instagram">Instagram</a>
-            </div>
-          </div>
-
-          <div class="contacts-map">
-            <iframe
-              title="Карта «Пиццы Сказки»"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=41.8715%2C52.6495%2C41.8885%2C52.6575&layer=mapnik&marker=52.6535%2C41.88"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-            ></iframe>
-            <p class="map-caption">Мы находимся по адресу: Рассказово, ул. Пушкина, 16А — заберите заказ самовывозом в удобное время.</p>
+          <div class="menu-grid" data-menu-grid data-category="sets">
+            <!-- Карточки генерируются скриптом -->
           </div>
         </div>
       </section>
 
-      <section class="feedback">
-        <div class="container feedback-card">
-          <h2>Есть идея или вопрос?</h2>
-          <p>Расскажите нам — менеджер свяжется в течение 10 минут.</p>
-          <form class="feedback-form" data-feedback-form>
-            <div class="form-group">
-              <label for="feedback-name">Имя</label>
-              <input id="feedback-name" name="name" type="text" placeholder="Анна" />
-            </div>
-            <div class="form-group">
-              <label for="feedback-phone">Телефон *</label>
-              <input id="feedback-phone" name="phone" type="tel" required placeholder="+7 (900) 000-00-00" />
-            </div>
-            <div class="form-group">
-              <label for="feedback-message">Сообщение *</label>
-              <textarea id="feedback-message" name="message" rows="4" required placeholder="Напишите, чем мы можем помочь"></textarea>
-            </div>
-            <button class="btn primary" type="submit">Отправить</button>
-          </form>
+      <section class="advantages">
+        <div class="container advantages-grid">
+          <article class="adv-card">
+            <h3>Свежие ингредиенты</h3>
+            <p>Мы выбираем лучшие продукты от проверенных поставщиков без полуфабрикатов.</p>
+          </article>
+          <article class="adv-card">
+            <h3>Быстрая доставка</h3>
+            <p>Доставим заказ за 45 минут или подарим промокод на следующую покупку.</p>
+          </article>
+          <article class="adv-card">
+            <h3>Накопительная система</h3>
+            <p>Кешбэк 5% на карту «Пиццы Сказки» за каждый заказ и дополнительные подарки друзьям.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="delivery-info" id="delivery-info">
+        <div class="container delivery-grid">
+          <div>
+            <h2>Как оформить заказ</h2>
+            <ol>
+              <li>Выберите позиции в меню и добавьте их в корзину.</li>
+              <li>Перейдите на страницу оформления заказа и заполните контакты.</li>
+              <li>Оплатите онлайн или наличными — курьер привезёт заказ в удобное время.</li>
+            </ol>
+          </div>
+          <div class="info-card">
+            <h3>Зона доставки</h3>
+            <p>Доставляем в пределах города и ближайших посёлков. Заказы до 1000 ₽ — доставка 150 ₽, от 1000 ₽ — бесплатно.</p>
+            <a class="btn ghost" href="contacts.html">Узнать подробности</a>
+          </div>
         </div>
       </section>
     </main>
@@ -1110,6 +1147,33 @@ select:focus {
         </div>
       </div>
     </footer>
+
+    <button class="floating-cart" data-cart-toggle aria-expanded="false">
+      <span class="floating-cart__icon" aria-hidden="true">🛒</span>
+      <span>
+        Корзина • <span data-cart-count>0</span> шт.
+      </span>
+      <span class="floating-cart__total" data-cart-total>0 ₽</span>
+    </button>
+
+    <div class="cart-drawer" data-cart-drawer aria-hidden="true">
+      <div class="cart-drawer__content">
+        <div class="cart-drawer__header">
+          <h2>Ваш заказ</h2>
+          <button class="cart-drawer__close" data-cart-close aria-label="Закрыть корзину">×</button>
+        </div>
+        <div class="cart-drawer__body" data-cart-items>
+          <p class="empty-state">Добавьте блюда из меню, чтобы оформить заказ.</p>
+        </div>
+        <div class="cart-drawer__footer">
+          <div class="cart-total">
+            <span>Итого:</span>
+            <strong data-cart-total>0 ₽</strong>
+          </div>
+          <a class="btn primary full" href="order.html">Перейти к оформлению</a>
+        </div>
+      </div>
+    </div>
 
     <div class="backdrop" data-backdrop aria-hidden="true"></div>
 

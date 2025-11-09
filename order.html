@@ -75,25 +75,31 @@ img {
   padding: 1rem 0;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .logo {
   font-weight: 700;
   font-size: 1.5rem;
   color: var(--accent);
 }
 
-.main-nav {
+.header-links {
   display: flex;
   align-items: center;
   gap: 1.5rem;
   font-weight: 500;
 }
 
-.main-nav a {
+.header-links a {
   position: relative;
   padding: 0.25rem 0;
 }
 
-.main-nav a::after {
+.header-links a::after {
   content: '';
   position: absolute;
   left: 0;
@@ -106,10 +112,100 @@ img {
   transition: transform 0.2s ease;
 }
 
-.main-nav a:hover::after,
-.main-nav a:focus::after,
-.main-nav a.active::after {
+.header-links a:hover::after,
+.header-links a:focus::after,
+.header-links a.active::after {
   transform: scaleX(1);
+}
+
+.main-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(320px, 80vw);
+  background: #ffffff;
+  box-shadow: 4px 0 30px rgba(15, 23, 42, 0.12);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  z-index: 40;
+  display: flex;
+  align-items: stretch;
+}
+
+.main-nav.open {
+  transform: translateX(0);
+}
+
+.main-nav__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 2.5rem 2rem;
+  width: 100%;
+}
+
+.main-nav__title {
+  margin: 0 0 0.75rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.main-nav__link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+  background: transparent;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.main-nav__link svg {
+  flex-shrink: 0;
+  opacity: 0.2;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.main-nav__link:hover,
+.main-nav__link:focus {
+  transform: translateX(6px);
+  background: rgba(255, 90, 61, 0.08);
+  color: var(--accent);
+}
+
+.main-nav__link:hover svg,
+.main-nav__link:focus svg {
+  opacity: 0.6;
+  transform: translateX(2px);
+}
+
+.main-nav__link[aria-current='page'] {
+  background: rgba(255, 90, 61, 0.12);
+  color: var(--accent);
+}
+
+.main-nav__link[aria-current='page'] svg {
+  opacity: 0.6;
+}
+
+.nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(17, 24, 39, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 30;
+}
+
+.nav-backdrop.visible {
+  opacity: 1;
+  visibility: visible;
 }
 
 .phone-order {
@@ -128,21 +224,36 @@ img {
 }
 
 .burger {
-  display: none;
+  display: inline-flex;
   flex-direction: column;
-  gap: 0.3rem;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.35rem;
   background: transparent;
   border: none;
-  padding: 0.25rem;
+  padding: 0.35rem;
   cursor: pointer;
 }
 
 .burger span {
   display: block;
-  width: 24px;
+  width: 26px;
   height: 2px;
   background: var(--text);
+  border-radius: 999px;
   transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.burger.is-open span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.burger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.burger.is-open span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
 }
 
 .hero {
@@ -476,6 +587,28 @@ img {
   font-weight: 600;
 }
 
+.delivery-note {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 90, 61, 0.08);
+  border: 1px solid rgba(255, 90, 61, 0.18);
+}
+
+.delivery-note strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.delivery-note p {
+  margin: 0;
+  color: var(--text);
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -798,30 +931,8 @@ select:focus {
     gap: 1rem;
   }
 
-  .main-nav {
-    position: fixed;
-    inset: 0 0 auto auto;
-    top: 64px;
-    background: #fff;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1.5rem;
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-sm);
-    transform: translateY(-10px);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-  }
-
-  .main-nav.open {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .burger {
-    display: flex;
+  .header-links {
+    display: none;
   }
 
   .phone-order {
@@ -865,21 +976,71 @@ select:focus {
   <body data-page="order">
     <header class="site-header">
       <div class="container header-content">
-        <a class="logo" href="./">Пицца Сказка</a>
-        <nav class="main-nav" data-nav>
+        <div class="header-left">
+          <button class="burger" data-burger aria-label="Открыть меню" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <a class="logo" href="./">Пицца Сказка</a>
+        </div>
+        <div class="header-links">
           <a href="index.html#menu">Меню</a>
-          <a href="index.html#delivery">Доставка</a>
+          <a href="index.html#delivery-info">Доставка</a>
           <a class="active" href="order.html">Оформить заказ</a>
           <a href="contacts.html">Контакты</a>
-        </nav>
-        <button class="burger" data-burger aria-label="Открыть меню">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+        </div>
         <a class="phone-order" href="tel:+79106560571">Заказать по телефону</a>
       </div>
     </header>
+    <nav class="main-nav" data-nav aria-hidden="true">
+      <div class="main-nav__inner">
+        <p class="main-nav__title">Категории</p>
+        <a class="main-nav__link" href="index.html" data-page-target="home">
+          Главная
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 8H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M8.5 4L12 8L8.5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <a class="main-nav__link" href="pizza.html" data-page-target="pizzas">
+          Пиццы
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 8H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M8.5 4L12 8L8.5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <a class="main-nav__link" href="rolls.html" data-page-target="rolls">
+          Роллы
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 8H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M8.5 4L12 8L8.5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <a class="main-nav__link" href="snacks.html" data-page-target="snacks">
+          Закуски
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 8H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M8.5 4L12 8L8.5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <a class="main-nav__link" href="sets.html" data-page-target="sets">
+          Сеты
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 8H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M8.5 4L12 8L8.5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+        <a class="main-nav__link" href="combo-drinks.html" data-page-target="combo">
+          Комбо и напитки
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 8H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M8.5 4L12 8L8.5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+    </nav>
+    <div class="nav-backdrop" data-nav-backdrop aria-hidden="true"></div>
 
     <main>
       <section class="page-hero">
@@ -899,6 +1060,10 @@ select:focus {
             <div class="summary-total">
               <span>Итого:</span>
               <strong data-checkout-total>0 ₽</strong>
+            </div>
+            <div class="delivery-note">
+              <strong>Условия доставки</strong>
+              <p>Заказы до 1000 ₽ — доставка по Рассказово 150 ₽. От 1000 ₽ — бесплатно.</p>
             </div>
           </div>
 
@@ -976,7 +1141,7 @@ select:focus {
         </div>
         <div>
           <p class="footer-title">График работы</p>
-          <p>Ежедневно с 10:00 до 23:00</p>
+          <p>Ежедневно с 10:00 до 22:00, без выходных.</p>
         </div>
         <div>
           <p class="footer-title">Контакты</p>
@@ -1129,6 +1294,66 @@ select:focus {
         image: 'https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=600&q=80',
       },
     ],
+    sets: [
+      {
+        id: 'set-family',
+        name: 'Семейный сет',
+        description: 'Две большие пиццы 35 см, роллы «Филадельфия» и сырные палочки.',
+        price: 2190,
+        weight: '4 блюда · 2,6 кг',
+        image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80',
+      },
+      {
+        id: 'set-party',
+        name: 'Праздничный сет',
+        description: 'Три пиццы 35 см, комбо из закусок и морс на всю компанию.',
+        price: 2890,
+        weight: '6 блюд · 3,8 кг',
+        image: 'https://images.unsplash.com/photo-1566843971428-0b7be0b9c068?auto=format&fit=crop&w=600&q=80',
+      },
+      {
+        id: 'set-duo',
+        name: 'Сет «Дуэт»',
+        description: 'Пицца 42 см на выбор и роллы «Калифорния» со свежим лимонадом.',
+        price: 1590,
+        weight: '3 блюда · 1,9 кг',
+        image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=600&q=80',
+      },
+    ],
+    combo: [
+      {
+        id: 'combo-lunch',
+        name: 'Ланч-комбо',
+        description: 'Пицца 25 см, мини-салат и напиток на выбор.',
+        price: 690,
+        weight: '3 блюда · 820 г',
+        image: 'https://images.unsplash.com/photo-1613478881184-2a5b32d432f1?auto=format&fit=crop&w=600&q=80',
+      },
+      {
+        id: 'combo-evening',
+        name: 'Вечерний комбо-набор',
+        description: 'Пицца 35 см, крылышки BBQ и морс 1 л.',
+        price: 1190,
+        weight: '3 блюда · 1,4 кг',
+        image: 'https://images.unsplash.com/photo-1542838686-73e7d57a0c51?auto=format&fit=crop&w=600&q=80',
+      },
+      {
+        id: 'combo-party-drinks',
+        name: 'Комбо напитков',
+        description: 'Морс, лимонад и классическая кола — три напитка по 0,5 л.',
+        price: 450,
+        weight: '3 × 0,5 л',
+        image: 'https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80',
+      },
+      {
+        id: 'combo-tea',
+        name: 'Чайный набор',
+        description: 'Имбирный чай 1 л и ассорти сладких роллов.',
+        price: 650,
+        weight: '2 блюда · 900 г',
+        image: 'https://images.unsplash.com/photo-1527169402691-feff5539e52c?auto=format&fit=crop&w=600&q=80',
+      },
+    ],
   };
 
   function readCart() {
@@ -1275,7 +1500,9 @@ select:focus {
     const grid = document.querySelector('[data-menu-grid]');
     if (!grid) return;
 
-    const items = menuData[category] || [];
+    const targetCategory = category || grid.dataset.category || 'pizzas';
+    const items = menuData[targetCategory] || [];
+    grid.dataset.category = targetCategory;
     grid.innerHTML = '';
 
     if (!items.length) {
@@ -1379,7 +1606,9 @@ select:focus {
     });
 
     const active = document.querySelector('[data-tab].active');
-    renderMenu(active ? active.dataset.tab : 'pizzas');
+    const grid = document.querySelector('[data-menu-grid]');
+    const defaultCategory = grid ? grid.dataset.category : 'pizzas';
+    renderMenu(active ? active.dataset.tab : defaultCategory);
   }
 
   function initMenuActions() {
@@ -1550,25 +1779,68 @@ select:focus {
   function initNavigation() {
     const burger = document.querySelector('[data-burger]');
     const nav = document.querySelector('[data-nav]');
+    const backdrop = document.querySelector('[data-nav-backdrop]');
     if (!burger || !nav) return;
 
+    const currentPage = document.body.dataset.page;
+    if (currentPage) {
+      nav.querySelectorAll('[data-page-target]').forEach((link) => {
+        if (link.dataset.pageTarget === currentPage) {
+          link.setAttribute('aria-current', 'page');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      });
+    }
+
+    const openNav = () => {
+      nav.classList.add('open');
+      nav.setAttribute('aria-hidden', 'false');
+      burger.setAttribute('aria-expanded', 'true');
+      burger.classList.add('is-open');
+      if (backdrop) {
+        backdrop.classList.add('visible');
+        backdrop.setAttribute('aria-hidden', 'false');
+      }
+    };
+
+    const closeNav = () => {
+      nav.classList.remove('open');
+      nav.setAttribute('aria-hidden', 'true');
+      burger.setAttribute('aria-expanded', 'false');
+      burger.classList.remove('is-open');
+      if (backdrop) {
+        backdrop.classList.remove('visible');
+        backdrop.setAttribute('aria-hidden', 'true');
+      }
+    };
+
     burger.addEventListener('click', () => {
-      const isOpen = nav.classList.toggle('open');
-      burger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      if (nav.classList.contains('open')) {
+        closeNav();
+      } else {
+        openNav();
+      }
     });
 
     nav.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', () => {
-        if (nav.classList.contains('open')) {
-          nav.classList.remove('open');
-          burger.setAttribute('aria-expanded', 'false');
-        }
-      });
+      link.addEventListener('click', closeNav);
+    });
+
+    if (backdrop) {
+      backdrop.addEventListener('click', closeNav);
+    }
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && nav.classList.contains('open')) {
+        closeNav();
+      }
     });
   }
 
   document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
+    renderMenu();
     initTabs();
     initMenuActions();
     initCartDrawer();
